@@ -38,8 +38,14 @@ DECLARE(gtp_clear_board);
 DECLARE(gtp_list_commands);
 DECLARE(gtp_debug);
 DECLARE(gtp_quit);
+DECLARE(gtp_name);
+DECLARE(gtp_version);
+DECLARE(gtp_protocol_version);
 
 static struct gtp_command commands[] = {
+  {"name",        	          gtp_name},
+  {"version",        	        gtp_version},
+  {"protocol_version",        gtp_protocol_version},
   {"boardsize",        	      gtp_set_boardsize},
   {"komi",        	      gtp_set_komi},
   {"clear_board",             gtp_clear_board},
@@ -288,6 +294,25 @@ gtp_debug(char *s)
     gtp_printf("\n");
   }
   return gtp_finish_response();
+}
+
+
+static int
+gtp_name(char *s)
+{
+  return gtp_success("liberty");
+}
+
+static int
+gtp_version(char* s)
+{
+  return gtp_success("liberty 1.0, karino2 custom");
+}
+
+static int
+gtp_protocol_version(char* s)
+{
+  return gtp_success("2");
 }
 
 
