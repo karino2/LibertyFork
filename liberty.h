@@ -62,6 +62,12 @@ void copydragons();
 void connectdragons();
 void recitedragons();
 
+/* add by karino2 */
+int legal(int i,int j,int color);
+int savestone2(int si,int sj,int *i,int *j);
+int fpopen(int *i, int *j, int *val);
+
+
 #define MAX_BOARD 19
 #define MIN_BOARD 5
 #define DEFAULT_BOARD_SIZE 19
