@@ -1,0 +1,1828 @@
+#  The Pattern Database. First specify the pattern as follows:
+#  
+#  * - don't care
+#  0 - empty,
+#  1 - your piece,
+#  2 - my piece,
+#  3 - my next move
+#  4 - empty on edge,
+#  5 - your piece on edge,
+#  6 - my piece on edge
+#  7 - empty in corner (not implemented yet)
+#  8 - your piece in corner (not implemented yet)
+#  9 - my piece in corner (not implemented yet)
+#  
+#  After this, some supplementary information in the format
+#  :trfno,patwt
+#  
+#  Here trfno is the number of transformations of the pattern to
+#  consider, usually 8, or 4 (if the pattern has a symmetry).
+#  patwt is the pattern value.
+#
+#  any line beginnng with #, or any part of a line following
+#  whitespace is a comment. 
+#
+#  This file generates a pattern.h equivalent to that supplied
+#  with gnugo-1.2.
+#  
+#  `make renum' at the command line will correct the numbering
+#  of the patterns in case you insert, delete or move patterns
+#  around. The old file is renamed patterns.db.bak in case 
+#  this fails for any reason.
+
+# pattern 0
+
+*0*
+*0*      connect against peep (not on edge)
+232
+*1*
+:4,82
+
+# pattern 1
+
+
+*4*      connect against peep (on edge)
+232
+*1*
+:4,15
+
+# pattern 2
+
+*1*
+*0*      connect against peep (not on edge) 
+232
+*1*
+:4,82
+
+# pattern 3
+
+*2*
+*0*      connect against peep (not on edge)
+232
+*1*
+:4,82
+
+# pattern 4
+
+
+*4*      connect against peep (on edge)
+232
+*1*
+:4,12
+
+
+# pattern 5
+
+*0*      break connection
+131
+*2*
+:4,70
+
+# pattern 6
+
+*2*      break connection
+131
+*2*
+:4,82
+
+# pattern 7
+
+230      connect if invaded
+012
+:8,83
+
+# pattern 8
+
+212      try to attack
+030
+:4,15
+
+# pattern 9
+
+*0**     connect if invaded
+2302
+0100
+:8,83
+
+# pattern 10
+
+20302    connect if invaded
+00100
+:4,84
+
+# pattern 11
+
+203      form eye to protect
+021
+:8,10
+
+# pattern 12
+
+202      form eye to protect
+031
+:8,79
+
+## pattern 9 [Do we really need this?]
+#
+# 230      connect if invaded
+# 102
+# :8,80
+
+# pattern 13
+
+1230     protect by drawing back
+1102
+:8,82
+
+# pattern 14
+
+20100    connect if invaded
+00302
+**0**
+:8,82
+
+# pattern 15
+
+2100     connect if invaded
+0302
+0*0*
+:8,83
+
+# pattern 16
+
+2100     connect if invaded
+0302
+2*0*
+:8,83
+
+# pattern 17
+
+4444444   don't tenuki when star is approached
+4000000
+4000010
+4002000
+4000000
+4030000
+4000000
+:8,83
+
+# pattern 18
+
+4444444   don't tenuki when star is approached
+4000000
+4000000
+4002010
+4000000
+4003000
+4000000
+:8,83
+
+# pattern 19
+
+44444444   don't tenuki when star is approached
+40000000
+40000000
+40020010
+4000000*
+4003000*
+4000000*
+:8,83
+
+# pattern 20
+
+44444444   don't tenuki when star is approached
+40000000
+40003010
+40020000
+4000000*
+4000000*
+4000000*
+:8,83
+
+# pattern 21
+
+210     when caught in a crosscut, extend
+123
+*00
+:8,83
+
+# pattern 22
+
+122*    capture one stone
+2100
+203*
+*0**
+:8,83
+
+# pattern 23
+
+44444   defend slide with kosumi
+00100
+03001
+0020*
+:8,82
+
+# pattern 24
+
+444444  block if attached
+000000
+031000
+002010
+:8,82
+
+# pattern 25
+
+444444  block if attached
+000000
+031000
+002001
+:8,82
+
+# pattern 26
+
+444444  defend against hane
+000000
+021100
+032010
+:8,82
+
+# pattern 27
+
+44444444  defend against hane
+40030000
+40031100
+40002001
+:8,82
+
+# pattern 28
+
+444444  jump under a stone on 4-th row
+000002
+030002
+001002
+:8,82
+
+# pattern 29
+
+444442  jump under a stone on 4-th row
+000002
+030002
+001002
+:8,82
+
+# pattern 30
+
+444444**   make 2 space extension on third row
+000000**
+03002000
+000000**
+:8,78
+
+# pattern 31
+
+4444444  make 2 space extension on third row
+0000000  combined with approach move
+1030020
+0000000
+:8,80
+
+# pattern 32
+
+4444444  make 2 space extension on third row
+1000000  combined with approach move
+0030020
+0000000
+:8,83
+
+# pattern 33
+
+444444*  make 2 space extension on third row
+000000*
+0200300
+000000*
+:8,78
+
+# pattern 34
+
+444444*  make 2 space extension on third row
+000000*
+0200301
+000000*
+:8,78
+
+# pattern 35
+
+4444444  make 3 space extension from two stones
+0000000
+030002*
+000002*
+:8,79
+
+# pattern 36
+
+*1*      attack eye
+101      
+030
+:4,25
+
+# pattern 37
+
+40000    defend to prevent peep
+40020
+40000
+40020
+43000
+40100
+:8,82
+
+# pattern 38
+
+01020    hane to defend
+00013
+:8,80
+
+# pattern 39
+
+*001*     slide
+*0002
+*0300
+44444
+:8,80
+
+# pattern 40
+
+0201      expand shape
+2030
+0000
+4444
+:8,75
+
+# pattern 41
+
+*1**00     slide
+000200
+030000
+444444
+:8,80
+
+# pattern 42
+
+*1**0     slide
+00020
+03000
+44444
+:8,75
+
+# pattern 43
+
+000000    approach stone on 4-th row
+000010
+003000
+000000
+444444
+:8,83
+
+# pattern 44
+
+00000   jump when stone on third row is approached
+03000   
+00000
+02010
+00000
+44444
+:8,60
+
+# pattern 45
+
+*102    extend to avoid cut
+3200
+4444
+:8,80
+
+# pattern 46
+
+2132    cut!
+021*
+:8,82
+
+# pattern 47
+
+21*2    connect under
+2300
+4000
+:8,80
+
+# pattern 48
+
+444     strengthen stone to prevent undermining hane
+000
+021
+031
+:8,80
+
+# pattern 49
+
+4444    jump up when kicked
+0000
+0210
+0301
+:8,80
+
+# pattern 50
+
+44444444444   approach star
+00000000004
+00000300004
+02000001004
+:8,83
+
+# pattern 51
+
+4444          hane if attached under fourth line stone
+0000
+0130
+0200
+0000
+:8,80
+
+# pattern 52
+
+4444          stand to defend if attached on third line
+0000
+0120
+0030
+0000
+:8,81
+
+# pattern 53
+
+44444          block on top if 2 space extension is invaded
+00000
+20120
+00300
+*000*
+:8,82
+
+# pattern 54
+
+0120          extend against double hane
+120*
+030*
+:8,80
+
+# pattern 55
+
+40000         3 space extension from 1 space jump
+40202
+40000
+40000
+40000
+40000
+40300
+40000
+:8,81
+
+# pattern 56
+
+40002         3 space extension from knight's move
+40200
+40000
+40000
+40000
+40000
+40300
+40000
+:8,82
+
+# pattern 57
+
+         
+4020**    jump up to claim space from 3 point
+40000*    extension
+40000*
+40000*
+40000*
+402030
+40000*
+40100*
+:8,82
+
+# pattern 58
+
+         
+4020*    jump up to claim space from 3 point
+40000    
+40000
+40000
+40000
+40203
+40000
+:8,80
+
+
+# pattern 59
+
+0030         hane if attached
+0210
+0000
+0010
+:8,81
+
+# pattern 60
+
+0020         extend and peep
+0211
+0300
+0010
+:8,82
+
+# pattern 61
+
+00000        knight's move to claim space
+00000
+00300
+20000
+01000
+:8,80
+
+# pattern 62
+
+00000        knight's move to claim space
+00300
+00000
+02010
+00000
+:8,77
+
+# pattern 63
+
+**20         block if hane
+0120
+0013
+4444
+:8,82
+
+# pattern 64
+
+00300        defend corner from star
+22004
+00004
+00004
+44444
+:8,79
+
+# pattern 65
+
+000304        defend corner from star
+202004
+000004
+000004
+444444
+:8,79
+
+# pattern 66
+
+000304        defend corner from star
+002004
+200004
+000004
+444444
+:8,79
+
+# pattern 67
+
+*1*           make bamboo joint
+202
+203
+:8,81
+
+# pattern 68
+
+*1*
+212           connect bamboo joint
+232
+*1*
+:4,81
+
+# pattern 69
+
+*1*
+212           connect bamboo joint
+232
+*01
+:8,81
+
+# pattern 70
+
+*1*
+212           connect bamboo joint (not on edge)
+232           
+000
+*0*
+:8,60
+
+# pattern 71
+
+*1*
+212           connect bamboo joint (not on edge)
+232           
+000
+*1*
+:8,60
+
+# pattern 72
+
+*1*
+212           connect bamboo joint (not on edge)
+232           
+000
+*2*
+:8,60
+
+# pattern 73
+
+*1*1*         pattern to make two partial connections
+20202
+00000
+00300
+:4,75
+
+# pattern 74
+
+0000004       extend from star
+0002004
+0300004
+0000004
+4444444
+:8,79
+
+# pattern 75
+
+02004         prevent extension
+00204
+01104
+00000
+00000
+00000
+03000
+00000
+:8,82
+
+# pattern 76
+
+0000004        jump to 3-3
+0000204
+0000004
+0001004
+0200304
+0000004
+4444444
+:8,82
+
+# pattern 77
+
+02               block
+31
+21
+:8,82
+
+# pattern 78
+
+030              extend
+021
+21*
+21*
+:8,82
+
+# pattern 79
+
+12               stop connection on edge
+30
+40
+11
+:8,20
+
+# pattern 80
+
+421              move out on second line
+421
+430
+000
+:8,75
+
+# pattern 81
+
+003201           connect
+002100
+000100
+000000
+:8,80
+
+# pattern 82
+
+00002            hane
+00200
+03101
+00000
+:8,80
+
+# pattern 83
+
+0000             connect
+032*
+0211
+:8,25
+
+# pattern 84
+
+01223            extend
+00110
+:8,80
+
+# pattern 85
+
+*220             bend around
+1130
+0000
+:8,30
+
+# pattern 86
+
+*110             bend around
+2230
+0000
+:8,30
+
+# pattern 87
+
+444444           block after 3-3 invasion
+400000
+401000
+403200
+400000
+400000
+:8,80
+
+# pattern 88
+
+401              diagonal endgame move
+430
+402
+:8,60
+
+# pattern 89
+
+40000            extend
+40020
+40000
+40000
+40300
+40000
+:8,75
+
+# pattern 90
+
+401*            block on second line
+4122
+4300
+:8,80
+
+# pattern 91
+
+4302            block on second line
+4120
+41**
+:8,70
+
+# pattern 92
+
+112             extend after hane
+120
+030
+000
+:8,80
+
+# pattern 93
+
+012             extend after hane
+120
+030
+000
+:8,80
+
+# pattern 94
+
+0000**          knight's move to come out
+00301*
+000002
+000200
+444444
+:8,82
+
+# pattern 95
+**100000        extend from tsukenobi
+10120000
+12200020
+00000000
+40000000
+:8,82
+
+# pattern 96
+
+0000104          defend when pressed
+0010004
+0032004
+0000004
+4444444
+:8,81
+
+# pattern 97
+
+00000104          continue by jumping
+00110004
+02022004
+00000004
+44444444
+:8,81
+
+# pattern 98
+
+1204              push out
+1204
+0304
+*004
+:8,80
+
+# pattern 99
+
+1204              hane underneath
+1204
+0134
+0004
+:8,80
+
+# pattern 100
+
+1204              push once
+1204
+0124
+0134
+:8,80
+
+# pattern 101
+
+120               connect automatically
+231
+:8,82
+
+# pattern 102
+
+400               block
+4311
+4021
+42**
+:8,82
+
+# pattern 103
+
+401010            match opponent's jump
+400000
+402030 
+400000
+:8,70
+
+# pattern 104
+
+0000000           jump into empty space
+0202030
+0000000
+:8,60
+
+# pattern 105
+
+00001*            slide
+020000
+000030
+444444
+:8,60
+
+# pattern 106
+
+*0000             knight's move with good shape
+03002
+00020
+**112
+:8,60
+
+# pattern 107
+
+1000000
+0020030           follow up the slide with extension
+2000000
+4444444
+:8,75
+
+# pattern 108
+
+0100             follow up the slide with diagonal move
+3002             (another slide could be broken)
+0200
+4444
+:8,79
+
+# pattern 109
+
+101100             extend to 3 since B hane would
+032002             be severe.
+000200
+444444
+:8,79
+
+# pattern 110
+
+**11**            this comes up often. Without defense,  trouble.
+*12302
+120200
+544444
+:8,84
+
+# pattern 111
+
+00111             jump out from below
+03020
+00002
+44444
+:8,80
+
+# pattern 112
+
+000**              slide toward opponent's position
+02001
+00030
+44444
+:8,60
+
+# pattern 113
+
+*11*               extend to defend slide
+0023
+2000
+4444
+:8,60
+
+# pattern 114
+
+0000**             jump toward opponent's position
+020301
+000000
+444444
+:8,60
+
+# pattern 115
+
+******10*          defense is becoming urgent
+001020030
+000000200
+444444444
+:8,80
+
+# pattern 116
+
+0300               jump into center        
+0001
+0200
+0002
+4444
+:8,75
+
+# pattern 117
+
+00200              prevent cut
+10000
+00231
+:8,80
+
+# pattern 118
+
+*0**               double atari
+213*
+*210
+**2*
+:8,80 
+
+# pattern 119
+
+*00*               prevent double atari
+1230
+*120
+**1*
+:8,77 
+
+# pattern 120
+
+21                 defend connection
+13                 
+:8,65
+
+# pattern 121
+
+203      form eye to protect
+021
+:8,10
+
+# pattern 122
+
+202      form eye to protect
+031
+:8,10
+
+# pattern 123
+
+230      connect if invaded
+102
+:8,10
+
+# pattern 124
+
+200000   extend
+*00030
+*00000
+:8,10
+
+# pattern 125
+
+*2*      extend
+000
+000
+000
+030
+000
+:4,10
+
+# pattern 126
+
+20000    extend
+*0030
+*0000
+:8,10
+
+# pattern 127
+
+*2*      extend
+000
+000
+030
+000
+:4,10
+
+# pattern 128
+
+421     overrides 113
+430
+400
+:8,20
+
+# pattern 129
+
+2000     extend
+*030
+*000
+:8,10
+
+# pattern 130
+
+*2*      extend
+000
+030
+000
+:4,10
+
+# pattern 131
+
+*22*      block on edge
+4431
+:8,5
+
+# pattern 132
+
+*22*      block on edge
+2431
+:8,5
+
+# pattern 133
+
+*21*     fill ko at end of game
+2321     1/2 point
+*21*
+:8,1
+
+# pattern 134
+
+*21*     fill ko at end of game
+6365     1/2 point
+:8,1
+
+# pattern 135
+
+2211     endgame move
+4434     2 points
+:8,4
+
+# pattern 136
+
+1021     block edge connection
+5434
+:8,30
+
+# pattern 137
+
+2211     endgame move
+4301     1 point
+:8,2
+
+# pattern 138
+
+420      endgame move
+431
+40*
+:8,20
+
+
+# pattern 139
+
+221      endgame move
+431      2 points
+:8,4
+
+# pattern 140
+
+1134     block! this can be life or death    
+*202
+**2*
+:8,3
+
+# pattern 141
+
+*1**     cut the knight's move
+0032
+2012
+:8,25
+
+# pattern 142
+
+*1**     cut the knight's move
+0122
+2312
+:8,25
+
+# pattern 143
+
+*1**     cut the knight's move
+0322
+2112
+:8,25
+
+# pattern 144
+
+*11      push
+230
+444
+:8,4
+
+# pattern 145
+
+2010     jump under on second line
+0203
+4444
+:8,65
+
+# pattern 146
+
+*21*     fill ko
+2321     sometimes a good idea!!
+*21*
+:8,10
+
+# pattern 147
+
+214      prevent eye in corner
+231
+:8,
+
+# pattern 148
+
+400444   high value to override findsaver
+122130
+*1221*
+**11**
+:8,9
+
+# pattern 149
+
+*02**    capture one stone
+*31220
+00000*
+444444
+:8,83
+
+# pattern 150
+
+211      connect
+023
+212
+:8,60
+
+# pattern 151
+
+20000     extend          
+00301
+00000
+44444
+:8,30
+
+# pattern 152
+
+10000      extend
+00302
+00000
+44444
+:8,30
+
+# pattern 153
+
+22221111        save 3 stones
+01132221
+44444444
+:8,90
+
+# pattern 154
+
+1211            break connection
+134*
+:8,6
+
+# pattern 155
+
+1022            break connection
+1001
+030*
+:8,6
+
+# pattern 156
+
+101            extend and peep
+030
+000
+020
+:4,35
+
+# pattern 157
+
+41             extend on second line
+43
+42
+:8,15
+
+# pattern 158
+
+41             close on first line
+32             more than yose, this can be life or death
+42
+:8,25
+
+# pattern 159
+
+41             push on first line
+31             more than yose, this can be life or death
+2*
+:8,25
+
+# pattern 160
+
+1032           extend on second line
+4444
+:8,15
+
+# pattern 161
+
+020*           endgame move
+2031
+0000
+4444
+:8,20
+
+# pattern 162
+
+0100           endgame move
+1002
+4444
+:8,30
+
+# pattern 163
+
+231            endgame move
+441
+:8,4
+
+# pattern 164
+
+2110           endgame move
+4234
+:8,20
+
+# pattern 165
+
+1220
+4134
+:8,20
+
+# pattern 166
+
+11*
+23*
+001
+:8,20
+
+# pattern 167
+
+2001          extend
+0030
+:8,10
+
+# pattern 168
+
+**0*
+1302          extend and attach
+0000
+4444
+:8,40
+
+# pattern 169
+
+**2*
+1302          extend and attach
+0000
+4444
+:8,40
+
+# pattern 170
+
+*1100         slide
+22001
+00030
+44444
+:8,30
+
+# pattern 171
+
+210           jump on second line
+203
+444
+:8,30
+
+# pattern 172
+
+102           push into knight's move
+030
+010
+:8,15
+
+# pattern 173
+
+000           push against opponent
+231
+000
+:8,10
+
+# pattern 174
+
+00            block off area
+23
+*1
+:8,10
+
+# pattern 175
+
+00            block off area
+03
+21
+:8,20
+
+# pattern 176
+
+201           block off area
+030
+102
+:8,60
+
+# pattern 177
+
+2311*
+00221
+44444
+:8,80
+
+# pattern 178
+
+*111*         escape the crane's nest
+12200
+100**
+*03**
+:8,75
+
+# pattern 179
+
+110           extend on second line
+223
+444
+:8,3
+
+# pattern 180
+
+402000        knight's move for defense
+400010
+400300
+400000
+400000
+:8,80
+
+# pattern 181
+
+400000        knight's move for defense
+402010
+400000
+400300
+400000
+:8,80
+
+# pattern 182
+
+*000*        hane at the head of three stones
+21113
+*2220
+:8,60
+
+
+# pattern 183
+
+*00*        hane at the head of two stones
+2113
+*220
+:8,65
+
+
+# pattern 184
+
+**1*        push through to cut
+*21*
+2023
+*000
+***1
+:8,77
+
+# pattern 185
+
+**1*        push through to cut
+*21*
+2023
+***1
+:8,75
+
+# pattern 186
+
+002020      block opponent
+000000
+000103
+000000
+:8,80
+
+# pattern 187
+
+403*        extend to defend connection
+4021 
+4000
+4000
+4020
+:8,82
+
+# pattern 188
+
+402*        hane to defend connection
+4021 
+4310
+400*
+4020
+:8,82
+
+# pattern 189
+
+402*        hane to defend connection
+4021 
+4310
+400*
+4020
+:8,82
+
+
+# pattern 190
+
+421*        large value to override findsaver
+4020
+4311
+4022
+40**
+:8,9
+
+# pattern 191
+
+0220        extend
+0000
+0000
+0300
+0000
+:8,60
+
+# pattern 192
+
+0200        block
+1301
+0000
+4444
+:8,82
+
+# pattern 193
+
+0200        block
+1300
+0000
+4444
+:8,82
+
+
+# pattern 194
+
+0200        block
+1201
+0130
+4444
+:8,82
+
+# pattern 195
+
+211100      extend
+122030
+112000
+444444
+:8,82
+
+# pattern 196
+
+*1100      extend
+12030
+12000
+44444
+:8,82
+
+# pattern 197
+
+*200       hane
+1200
+0130
+0000
+:8,50
+
+# pattern 198
+
+*2**
+1200       atari
+0120
+0300
+:8,50
+
+# pattern 199
+
+4001       invade
+4000
+4030
+4000
+4010
+:8,40
+
+# pattern 200
+
+4010       invade
+4000
+4030
+4000
+4010
+:8,40
+
+# pattern 201
+
+4010       invade
+4000
+4030
+4000
+4000
+4010
+:8,50
+
+# pattern 202
+
+0000000000
+1000030000    invade
+0000000000
+4444444444
+:8,79
+
+# pattern 203
+
+0000000000
+1000030000    invade
+0000000000
+4444444444
+:8,79
+
+# pattern 204
+
+4002          block on third line
+4030
+4000
+4010
+:8,78
+
+# pattern 205
+
+*222          block on second line
+1300
+4444
+:8,15
+
+# pattern 206
+
+*10           don't let opponent block
+230
+000
+444
+:8,75
+
+# pattern 207
+
+*20           block
+130
+000
+444
+:8,75
+
+# pattern 208
+
+*011*        extend
+03221
+00001
+:8,80
+
+# pattern 209
+
+0104         slide
+0034
+1000
+0200
+:8,70
+
+# pattern 210
+
+0100       knight's move to come out
+0030
+2000
+4444
+:8,65
+
+# pattern 211
+
+**1     endgame move
+230
+*02
+:8,4
+
+# pattern 212
+
+111      endgame move
+321
+*02
+:8,4
+
+# pattern 213
+
+*2*      endgame move
+12*
+031
+:8,4
+
+# pattern 214
+
+20*      three crows
+030
+*02
+:8,30
+
+# pattern 215
+
+22*       block on second row
+031
+44*
+:8,12
+
+# pattern 216
+
+12        descend to edge
+43
+:8,4
+
+# pattern 217
+
+12        push in
+32
+:8,4
+
+# pattern 218
+
+2231*     cut!
+00122
+44444
+:8,82
+
+# pattern 219
+
+00110     hane
+20021
+00203
+44444
+:8,75
+
+# pattern 220
+
+00300     connect
+20002
+44444
+:8,75
+
+# pattern 221
+
+00100     connect
+20302
+44444
+:8,75
+
+# pattern 222
+
+444444    hane on second line
+030200
+012002
+*01100
+:8,75
+
+# pattern 223
+
+4444444   3-3 point invasion
+4000000
+4003000
+4000100
+400000*
+40000**
+:8,75
+
+# pattern 224
+
+**0**    jump out
+*030*
+1000*
+00201
+00000
+44444
+:8,83
+
+# pattern 225
+
+402      connect under
+400
+431
+402
+42*
+:8,80
+
+# pattern 226
+
+422      connect under
+401
+431
+402
+42*
+:8,80
+
+# pattern 227
+
+***0***    set up double atari
+**010**
+*31210*
+0122210
+:4,8

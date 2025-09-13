@@ -1,0 +1,166 @@
+                This is LIBERTY, a Go Program
+
+LIBERTY is descended from Gnugo 1.2, an earlier program written
+by Man Lung Li and copyrighted by the Free Software Foundation.
+LIBERTY, like Gnugo 1.2 is free software issued under a slightly
+amended version 2 of the General Public License (GPL) of the
+Free Software Foundation which may be found in the file COPYING. 
+
+Liberty Works with the Go Modem Protocol. You run it under
+CGoban in X-Windows. It can play with itself, or any other
+program implementing the Go Modem Protocol, such as the program
+baduki by Lim Jaebum (also known as Artist). Baduki is based on
+Xamigo, by Stoney Ballard, Neil Bowers, Todd Johnson and
+perhaps others. To obtain baduki, consult:
+
+http://soback.kornet21.net/~artist/baduk/baduki.html
+
+Although Liberty is based on Gnugo 1.2, it is a lot stronger.
+In fact, it can give Gnugo a 9 stone handicap. Liberty and
+baduki are fairly evenly matched ... each wins some games. (They
+are still weak, of course.)
+
+
+                 Changes from CGoban
+
+(1) Liberty uses the Go Modem Protocol instead of the
+
+(2) The life and death modules have been rewritten. These
+are in the files attacker.c and defender.c. Liberty (unlike
+Gnugo) tries to read and can even read a ladder. 
+
+(3) I have retained Gnugo's pattern matcher but I have
+greatly expanded the pattern library . Whereas Gnugo knew
+about 24 patterns, Liberty knows 228 patterns. Moreover
+you can now add patterns very easily by editing the pattern
+database patterns.db. 
+
+                Forking the Development Tree
+
+I have deliberately taken an existing Go program, Gnugo 1.2, and
+made it different. Any Go program issued under the GPL is
+guaranteed to have its descendents open sourced. Thus any strong
+program issued under the GPL could be the basis for work by
+other programmers.  Liberty is not a strong program, but it
+could be the seed of one.
+
+You are encouraged to distribute this program within the guidelines
+of the GPL. You are encouraged to make derivative Go programs which
+are different, stronger, better. Due to the stipulations of the
+GPL any derivative of this work must also be under the GPL. In
+practical terms, if you share the program, you must also share
+the source code. This is to the good, since others can then
+use your program and further enhance it.
+
+I have added one restriction to the GPL: if you enter a program
+derived from this one into any event carrying a cash prize, you
+must publish your source code.
+
+                      Instructions
+
+Get liberty-1.0.tar.gz from http://match.stanford.edu/bump/liberty.html.
+
+Untar the sources and build them at the command line with the
+command `make'.
+
+Obtain CGoban 1.9.2 from Bill Shubert's web site
+(http://www.hevanet.com/wms/). The version number MUST be 1.9.1 at
+least or it won't work.
+
+Start CGoban from a shell under X-Windows with the command
+cgoban -stealth. The shell can be an xterm or (my preference)
+the Emacs shell. The diagnostics will be echoed to the
+shell. Using the Emacs shell allows you to scroll through
+the diagnostics for analytical purposes.
+
+When the CGoban Control panel comes up, select Go Modem.
+You will get the Go Modem Protocol Setup. Choose one (or
+both) of the playsers to be ``Program,'' and fill out the
+box to the path to gnugo-hack. After clicking OK, you get
+the Game Setup window. Choose ``Rules Set'' to be Japanese
+(otherwise handicaps won't work). Set the handicap if you
+want. Click OK and you are ready to go.
+
+                 You Can MAKE IT SHUT UP
+
+In its default configuration, LIBERTY produces a lot of
+diagnostics. These can be extremely useful but if they
+annoy you, find the line:
+
+verbose=1;  /* change this to 0 to turn off the yakkity-yak */
+
+in main.c and change to verbose=0. Then remake.
+
+                    Go Modem Protocol
+
+The Go Modem Protocol was developed by Bruce Wilcox with
+input from David Fotland, Anders Kierulf and others,
+according to the history in the file protocol.Z, available
+from ftp://igs.nuri.net/Go/programs/. Any Go program
+*should* use this protocol since it is standard. (For
+example the rules of the FOST Cup encourage entrants to use
+this protocol.) Since CGoban supports this protocol, the
+user interface for any Go program can be done entirely
+through CGoban. The programmer can concentrate on the real
+issues without worrying about drawing stones, resizing the
+board and other distracting issues.
+
+You can also run the original Gnugo under CGoban using the
+Go Modem Protocol. Obtain the kit gnugo-gmp.tar.gz from 
+http://match.stanford.edu/bump/gnugo.html to modify
+Gnugo-1.2.
+
+                      Copyrights
+
+All modifications here to gnugo are issued under the GPL,
+described in the file COPYING with the exception of the two
+files gmp.c and gmp.h. These files are copyrighted by Bill
+Shubert (http://www.hevanet.com/wms/), and are free for
+unrestricted use. However they are not GPL'd. The file
+gmp.h also contains code copyrighted by David Fotland and
+Shuji Sunaga. Copyright notices may be found at the
+beginning of the files. These copyrights do not restrict
+either commercial or noncommercial use of the programs.
+
+Apart from the two files gmp.c and gmp.h, I have mostly
+kept my code separate from Man Li's. Copyrights for the
+remaining files are with the Free Software Foundation
+and myself. I claim copyright (1999) on the files
+dragon.c, attacker.c, defender.c and hacks.c.
+
+The files shapes.c, genmove.c, matchpat.c, gnugo.c, opening.c, 
+sethand.c, and showbord.c are based on Man Li's original
+Gnugo code, though I have made modifications to each.
+The file shapes.c is based on Man Li's findpatn.c. The
+file gnugo.c is an amalgamation of several of Man Li's
+files. The original files on which these seven are based
+are all copyrighted by the Free Software Foundation.
+
+                       License	
+
+Liberty is a derivative work of Gnugo 1.2 by Man Li, which is
+published by the Free Software Foundation. It is substantially
+changed from Gnugo and in my view it constitutes a
+substantially new work.
+
+License: Liberty is distributed under the Gnu General Public
+License (GPL), amended by the following additional restriction:
+
+    If you enter a program derived from Liberty into any
+    tournament, contest or competition carrying a cash
+    prize, then you are obligated to publish your source
+    code as set forth under Section 3 of the GPL. I
+    would recommend that you satisfy this obligation to
+    publish by making the source code available on the
+    World-Wide-Web.
+
+The GPL may be found in the file COPYING.
+
+                       Daniel Bump
+                       http://match.stanford.edu/bump/go.html
+                       http://match.stanford.edu/bump/gnugo.html
+
+
+Aloril has added simple GTP support using code from newer GNU Go.
+Also support for other sizes than 19x19 has been added.
+Also disabled mkpat.

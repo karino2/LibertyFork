@@ -1,0 +1,82 @@
+# This is a database of connections. Stones of color 1 are
+# regarded as connected. Notation: k means a stone of color
+# 2 which can be captured. m means a miai pair: it must be
+# checked using readlad1 that if each player occupies one
+# of these positions, then a connected shape results.
+
+# After this, some supplementary information in the format
+# :trfno,libdefect
+#  
+# Here trfno is the number of transformations of the pattern to
+# consider, usually 8, or 4 (if the pattern has a symmetry).
+# libdefect is the ``liberty defect.'' When the two groups
+# are combined, the effective number of liberties is the sum
+# of the two liberties, minus libdefect.
+
+# connection 0
+
+10
+01
+:2,4
+
+# connection 1
+
+101
+101
+:4,4
+
+# connection 2
+
+*1*
+441
+:8,1
+
+# connection 3
+
+100
+101
+*0*
+:8,2
+
+# connection 4
+
+**0*
+0001
+1010
+*0**
+:8,2
+
+# connection 5
+
+0100
+1001
+*001
+:8,3
+
+# connection 6
+
+0100
+1001
+1000
+:8,3
+
+# connection 7
+
+1100
+1001
+1000
+:8,3
+
+# connection 8
+
+*11     false eye
+101
+11*
+:4,3
+
+# connection 9
+
+*1*
+101
+*0*
+:4,3
