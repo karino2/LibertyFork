@@ -36,7 +36,8 @@ int main(int argc,
    const char  *error;
    char movename[3];
 
-   verbose=1;  /* change this to 0 to turn off the yakkity-yak */
+   /* verbose=1; */ /* change this to 0 to turn off the yakkity-yak */
+   verbose = 0;
    showstack=0;
    fprintf(stderr, "\n\
 \n\
