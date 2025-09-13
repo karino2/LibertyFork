@@ -325,9 +325,11 @@ gtp_decode_color(char *s, int *color)
     color_string[i] = tolower((int) color_string[i]);
 
   if (strcmp(color_string, "b") == 0
+      || strcmp(color_string, "B") == 0
       || strcmp(color_string, "black") == 0)
     *color = BLACK;
   else if (strcmp(color_string, "w") == 0
+     || strcmp(color_string, "W") == 0
 	   || strcmp(color_string, "white") == 0)
     *color = WHITE;
   else

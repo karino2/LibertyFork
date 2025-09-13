@@ -32,13 +32,17 @@ float komi = 0.0;
 DECLARE(gtp_set_boardsize);
 DECLARE(gtp_set_komi);
 DECLARE(gtp_reg_genmove);
+DECLARE(gtp_genmove);
 DECLARE(gtp_play);
+DECLARE(gtp_clear_board);
 DECLARE(gtp_quit);
 
 static struct gtp_command commands[] = {
   {"boardsize",        	      gtp_set_boardsize},
   {"komi",        	      gtp_set_komi},
+  {"clear_board",             gtp_clear_board},
   {"reg_genmove",             gtp_reg_genmove},
+  {"genmove",             gtp_genmove},
   {"play",            	      gtp_play},
   {"quit",             	      gtp_quit},
   {NULL,                      NULL}
@@ -121,6 +125,21 @@ gtp_reg_genmove(char *s)
   return gtp_finish_response();
 }
 
+static void
+play_internal(int color, int i, int j)
+{
+  int m, n;
+  mymove = color;
+  umove = OTHER_COLOR(mymove);
+  if(i>=0) {
+    for (m=0;m<board_size;m++)
+      for (n=0;n<board_size;n++)
+        plast[m][n][umove-1]=p[m][n];   /* save position to recognize ko */
+    p[i][j] = mymove;
+    examboard(umove);   /* remove your dead pieces */
+  }
+
+}
 
 /* Function:  Play a stone of the given color at the given vertex.
  * Arguments: color, vertex
@@ -132,21 +151,13 @@ gtp_reg_genmove(char *s)
 static int
 gtp_play(char *s)
 {
-  int i, j, m, n;
+  int i, j;
   int color;
 
   if (!gtp_decode_move(s, &color, &i, &j))
     return gtp_failure("invalid color or coordinate");
 
-  mymove = color;
-  umove = OTHER_COLOR(mymove);
-  if(i>=0) {
-    for (m=0;m<board_size;m++)
-      for (n=0;n<board_size;n++)
-        plast[m][n][umove-1]=p[m][n];   /* save position to recognize ko */
-    p[i][j] = mymove;
-    examboard(umove);   /* remove your dead pieces */
-  }
+  play_internal( color, i, j );
   return gtp_success("");
 }
 
@@ -184,6 +195,60 @@ void play_gtp()
 
   /* Prepare pattern matcher and reading code. */
   gtp_main_loop(commands, stdin, NULL);
+}
+
+/*
+  Added by karino2.
+*/
+#include <string.h>
+
+static int
+gtp_clear_board(char *s)
+{
+  for(int i = 0; i < MAX_BOARD; i++) {
+    memset(&p[i][0], 0, MAX_BOARD);
+    memset(&l[i][0], 0, MAX_BOARD);
+    memset(&ma[i][0], 0, MAX_BOARD);
+    memset(&ml[i][0], 0, MAX_BOARD);
+    memset(&plast[i][0], 0, MAX_BOARD);
+    memset(&worm[i][0], 0, MAX_BOARD);
+    memset(&drag[i][0], 0, MAX_BOARD);
+  }
+
+  for (int i = 0; i < 9; i++)
+     opn[i] = 1;
+  opn[4] = 0;
+
+  mk = 0;  uk = 0;
+  play = 1;
+  pass = 0;
+  mik = -1; mjk = -1;
+  uik = -1; ujk = -1;
+
+  return gtp_success("");
+}
+
+static int
+gtp_genmove(char *s)
+{
+  int i, j;
+  int color;
+  int n;
+
+  n = gtp_decode_color(s, &color);
+  if (!n)
+    return gtp_failure("invalid color");
+
+  mymove = color;
+  umove = OTHER_COLOR(mymove);
+  genmove(&i, &j);
+
+  /* after genmove, play that move. */
+  play_internal( color, i, j );
+
+  gtp_start_response(GTP_SUCCESS);
+  gtp_print_vertex(i, j);
+  return gtp_finish_response();
 }
 
 
